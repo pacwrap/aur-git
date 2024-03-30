@@ -2,14 +2,14 @@
 
 _pkgname=pacwrap
 pkgname=('pacwrap-git' 'pacwrap-dist-git')
-pkgver=0.7.2.r21.89d8109
+pkgver=pkgver=0.7.2.r33.b976554 
 pkgrel=1
 _pkgbase=$_pkgname
 pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
 arch=('x86_64')
 url="https://pacwrap.sapphirus.org/"
 license=('GPLv3-only')
-makedepends=('cargo' 'git' 'fakeroot' 'pacman' 'zstd' 'busybox' 'fakechroot')
+makedepends=('cargo' 'git' 'fakeroot' 'pacman' 'libalpm.so>=14' 'zstd' 'busybox' 'fakechroot')
 source=("$_pkgname::git+https://github.com/pacwrap/pacwrap.git")
 md5sums=('SKIP')
 options=('!lto')
@@ -35,7 +35,7 @@ build() {
 package_pacwrap-git() {
 	provides=("${_pkgname}")
 	conflicts=("${_pkgname}")
-	depends=('bash' 'bubblewrap' 'gnupg' 'pacman' 'libseccomp' "pacwrap-dist-git=$pkgver" 'zstd')
+	depends=('bash' 'bubblewrap' 'gnupg' 'pacman' 'libalpm.so>=14' 'libseccomp' "pacwrap-dist-git=$pkgver" 'zstd')
 	optdepends=('xdg-dbus-proxy')
 
   	cd "${_pkgbase}"
