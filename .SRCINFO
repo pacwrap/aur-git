@@ -1,6 +1,6 @@
 pkgbase = pacwrap-git
 	pkgdesc = Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers.
-	pkgver = pkgver=0.7.2.r33.b976554
+	pkgver = 0.7.2.r39.3dfd035
 	pkgrel = 1
 	url = https://pacwrap.sapphirus.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgname = pacwrap-git
 	depends = pacman
 	depends = libalpm.so>=14
 	depends = libseccomp
-	depends = pacwrap-dist-git=pkgver=0.7.2.r33.b976554
+	depends = pacwrap-dist-git=0.7.2.r39.3dfd035
 	depends = zstd
 	optdepends = xdg-dbus-proxy
 	provides = pacwrap

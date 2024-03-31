@@ -2,7 +2,7 @@
 
 _pkgname=pacwrap
 pkgname=('pacwrap-git' 'pacwrap-dist-git')
-pkgver=pkgver=0.7.2.r33.b976554 
+pkgver=0.7.2.r39.3dfd035
 pkgrel=1
 _pkgbase=$_pkgname
 pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
@@ -16,12 +16,12 @@ options=('!lto')
 
 pkgver() {
     cd $_pkgbase
-	echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+    echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 prepare() {
 	cd "${_pkgbase}" 	
-  	cargo fetch --locked --target "$CARCH-unknown-linux-gnu" \
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu" \
 	&& ./dist/tools/prepare.sh release
 }
 
