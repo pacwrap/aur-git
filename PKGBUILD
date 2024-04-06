@@ -2,7 +2,7 @@
 
 _pkgname=pacwrap
 pkgname=('pacwrap-git' 'pacwrap-dist-git')
-pkgver=0.7.2.r39.3dfd035
+pkgver=0.8.0.r9.a8f2d58
 pkgrel=1
 _pkgbase=$_pkgname
 pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
