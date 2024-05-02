@@ -1,8 +1,8 @@
-# Maintainer: Xavier R.M. (sapphirus at azorium dot net)
+# Maintainer: Xavier Moffett (sapphirus at azorium dot net)
 
 _pkgname=pacwrap
 pkgname=('pacwrap-git' 'pacwrap-dist-git')
-pkgver=0.8.0.r13.93a3386
+pkgver=0.8.1.r6.6168fef
 pkgrel=1
 _pkgbase=$_pkgname
 pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
