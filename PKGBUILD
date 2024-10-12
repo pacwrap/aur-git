@@ -2,10 +2,9 @@
 
 _pkgname=pacwrap
 pkgname=('pacwrap-git' 'pacwrap-dist-git')
-pkgver=0.8.1.r6.6168fef
+pkgver=0.8.6.r10.33dd491
 pkgrel=1
-_pkgbase=$_pkgname
-pkgdesc="Facilitates the creation, management, and execution of unprivileged Arch-based bubblewrap containers."
+pkgdesc="A package manager which facilitates Arch-based bubblewrap containers."
 arch=('x86_64')
 url="https://pacwrap.sapphirus.org/"
 license=('GPLv3-only')
@@ -22,18 +21,18 @@ md5sums=('SKIP')
 options=('!lto')
 
 pkgver() {
-        cd $_pkgbase
+        cd "${_pkgname}"
         echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
 prepare() {
-        cd "${_pkgbase}"
+        cd "${_pkgname}"
         cargo fetch --locked --target "$CARCH-unknown-linux-gnu" \
         && ./dist/tools/prepare.sh release
 }
 
 build() {
-        cd "${_pkgbase}"
+        cd "${_pkgname}"
         PACWRAP_SCHEMA_BUILT=1 \
         cargo build --release --frozen \
         && ./dist/tools/package.sh release
@@ -52,7 +51,7 @@ package_pacwrap-git() {
                 'zstd')
         optdepends=('xdg-dbus-proxy')
 
-        cd "${_pkgbase}"
+        cd "${_pkgname}"
         install -d "${pkgdir}/usr/share/${_pkgname}"
         install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
         install -Dm 755 "dist/bin/${_pkgname}-key" "${pkgdir}/usr/bin/${_pkgname}-key"
@@ -65,7 +64,7 @@ package_pacwrap-dist-git() {
         provides=("${_pkgname}-dist")
         conflicts=("${_pkgname}-dist")
 
-        cd "${_pkgbase}"
+        cd "${_pkgname}"
         install -dD 755 "${pkgdir}/usr/share/${_pkgname}/"
         install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}-dist/LICENSE"
         install -Dm 644 "dist/bin/filesystem.tar.zst" "${pkgdir}/usr/share/${_pkgname}/filesystem.tar.zst"
